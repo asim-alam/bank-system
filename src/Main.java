@@ -42,21 +42,24 @@ public class Main {
                     switch (accountType) {
                         case 1:
                             accountsC[currentCount++] = new CurrentAccount(id, name, balance);
+                            System.out.println("Account created successfully!");
                             break;
                         case 2:
                             if (balance < 1000) {
                                 System.out.println("insufficient balance");
                             } else {
                                 accountsS[savingsCount++] = new SavingsAccount(id, name, balance);
+                                System.out.println("Account created successfully!");
                             }
                             break;
                         case 3:
                             accountsD[depositCount++] = new DepositAccount(id, name, balance);
+                            System.out.println("Account created successfully!");
                             break;
                         default:
                             System.out.println("Invalid account type!");
                     }
-                    System.out.println("Account created successfully!");
+
                     break;
 
                 case 2:
