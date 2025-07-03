@@ -38,6 +38,8 @@ public abstract class Account {
 
     public abstract int transferTo(Account another, int amount);
 
+    public abstract void balanceWithInterest();
+
     public String toString() {
         return "account" + "id:" + id + "\n" + "name:" + name + "\n" + "balance:" + balance;
     }

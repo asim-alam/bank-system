@@ -16,8 +16,9 @@ public class Main {
             System.out.println("2. Debit");
             System.out.println("3. Credit");
             System.out.println("4. Transfer to Another Account");
-            System.out.println("5. View Accounts");
-            System.out.println("6. Exit");
+            System.out.println("5. Check Balance with interest");
+            System.out.println("6. View Accounts");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -42,21 +43,24 @@ public class Main {
                     switch (accountType) {
                         case 1:
                             accountsC[currentCount++] = new CurrentAccount(id, name, balance);
+                            System.out.println("Account created successfully!");
                             break;
                         case 2:
                             if (balance < 1000) {
                                 System.out.println("insufficient balance");
                             } else {
                                 accountsS[savingsCount++] = new SavingsAccount(id, name, balance);
+                                System.out.println("Account created successfully!");
                             }
                             break;
                         case 3:
                             accountsD[depositCount++] = new DepositAccount(id, name, balance);
+                            System.out.println("Account created successfully!");
                             break;
                         default:
                             System.out.println("Invalid account type!");
                     }
-                    System.out.println("Account created successfully!");
+
                     break;
 
                 case 2:
@@ -124,8 +128,18 @@ public class Main {
                         System.out.println("One or both accounts not found!");
                     }
                     break;
-
                 case 5:
+                    System.out.println("Enter Account Id:");
+                    String accountId=sc.nextLine();
+                    Account userAccount=findAccountById(accountsC, accountsS, accountsD, currentCount,
+                            savingsCount, depositCount, accountId);
+                    if (userAccount != null) {
+                        userAccount.balanceWithInterest();
+                    } else {
+                        System.out.println("Account not found!");
+                    }
+                    break;
+                case 6:
                     System.out.println("Current Accounts:");
                     for (int i = 0; i < currentCount; i++) {
                         System.out.println(accountsC[i].toString());
@@ -140,7 +154,7 @@ public class Main {
                     }
                     break;
 
-                case 6:
+                case 7:
                     System.out.println("Exiting program. Thank you!");
                     sc.close();
                     return;

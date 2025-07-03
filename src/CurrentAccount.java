@@ -10,7 +10,9 @@ public class CurrentAccount extends Account {
         balance += amount;
         return balance;
     }
-
+    public void balanceWithInterest() {
+        System.out.println("No interest Available on current account.balance:"+getBalance());
+    }
     public int debit(int amount) {
         int balance = getBalance();
         if (amount <= getBalance()) {
